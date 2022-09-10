@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Productify.API", "Productify.API\Productify.API.csproj", "{5076C1D9-17D9-4FC4-A7A8-DDB33A1966D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Productify.DAL", "..\Productify.DAL\Productify.DAL.csproj", "{E2626515-31D7-4F62-B27A-3130C4E5BED4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5076C1D9-17D9-4FC4-A7A8-DDB33A1966D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5076C1D9-17D9-4FC4-A7A8-DDB33A1966D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5076C1D9-17D9-4FC4-A7A8-DDB33A1966D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5076C1D9-17D9-4FC4-A7A8-DDB33A1966D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2626515-31D7-4F62-B27A-3130C4E5BED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2626515-31D7-4F62-B27A-3130C4E5BED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2626515-31D7-4F62-B27A-3130C4E5BED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2626515-31D7-4F62-B27A-3130C4E5BED4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1785C01-CCCC-437F-8D40-F3C7710F1DB0}
+	EndGlobalSection
+EndGlobal
