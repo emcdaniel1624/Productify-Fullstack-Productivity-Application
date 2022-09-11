@@ -3,17 +3,18 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
-using Productify.DAL.Context;
+using Productify.DAL.Factory;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
-builder.Services.AddDbContextFactory<ProductifyDataContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ProductifyTest"));
-});
+builder.Services.AddNoSqlProviderFactory(
+    ServiceLifetime.Transient,
+    builder.Configuration.GetValue<string>("Database:ConnectionString"),
+    builder.Configuration.GetValue<string>("Database:DatabaseName")
+);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
