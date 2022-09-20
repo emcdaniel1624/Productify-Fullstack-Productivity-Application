@@ -1,8 +1,29 @@
 import { NextPage } from "next";
+import { getSession, signIn } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const ProjectsPage : NextPage = () => {
+
+    const [ loading, setLoading ] = useState(true);
+
+    useEffect(() => {
+        const securePage = async () => {
+            const session = await getSession();
+            if(!session) {
+                signIn();
+            }
+            else {
+                setLoading(false);
+            }
+        }
+        securePage();
+    }, [])
+
+    if(loading) {
+        return ( <>Loading...</> )
+    }
     return (
-        <>Projects Page</>
+        <><br/><br/><br/><br/>Projects Page</>
     )
 }
 

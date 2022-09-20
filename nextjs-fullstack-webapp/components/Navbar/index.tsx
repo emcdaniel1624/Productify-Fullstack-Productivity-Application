@@ -4,7 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 export const Navbar = () => {
 
     const { data: session, status } = useSession();
-    console.log({session,status});
+
     return (
     <nav className="header">
         <h1 className="logo">
@@ -16,11 +16,13 @@ export const Navbar = () => {
                     <a>Home</a>
                 </Link>
             </li>
-            <li>
-                <Link href="/projects">
-                    <a>Projects</a>
-                </Link>
-            </li>
+            {session && (
+                <li>
+                    <Link href="/projects">
+                        <a>Projects</a>
+                    </Link>
+                </li>
+            )}
             {!(status == "loading") && !session && (
                 <li>
                     <Link href="/api/auth/signin">
