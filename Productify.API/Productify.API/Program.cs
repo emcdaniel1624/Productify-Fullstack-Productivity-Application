@@ -1,19 +1,21 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
-using Productify.DAL.Factory;
+using Productify.API.Data.Provider;
+using Productify.DAL.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
-builder.Services.AddNoSqlProviderFactory(
-    ServiceLifetime.Transient,
-    builder.Configuration.GetValue<string>("Database:ConnectionString"),
-    builder.Configuration.GetValue<string>("Database:DatabaseName")
+var connectionString = builder.Configuration.GetValue<string>("Database:ConnectionString");
+var databaseName = builder.Configuration.GetValue<string>("Database:DatabaseName");
+
+builder.Services.AddNoSqlProviderFactory<ProductifyProvider>(
+    (builder) => builder.UseMongo(connectionString, databaseName), 
+    ServiceLifetime.Transient
 );
 
 builder.Services.AddControllers();

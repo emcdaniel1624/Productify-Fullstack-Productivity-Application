@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Productify.DAL.Factory;
-using Productify.DAL.Models;
+using NoSqlProvider.Factory;
+using NoSqlProvider.Providers;
+using NoSqlProvider.Entity;
+using Productify.API.Data.Provider;
+using Productify.API.Models;
 
 namespace Productify.API.Controllers
 {
@@ -9,9 +12,9 @@ namespace Productify.API.Controllers
     [ApiController]
     public class ProjectsController : ApiControllerBase
     {
-        private readonly INoSqlProviderFactory _providerFactory;
+        private ProviderFactory<ProductifyProvider> _providerFactory;
 
-        public ProjectsController(INoSqlProviderFactory providerFactory)
+        public ProjectsController(ProviderFactory<ProductifyProvider> providerFactory)
         {
             _providerFactory = providerFactory;
         }
@@ -20,8 +23,8 @@ namespace Productify.API.Controllers
         public IActionResult GetProjects()
         {
             var provider = _providerFactory.CreateProvider();
-            var projects = provider.GetAll<Project>();
-            return Ok(projects.ToList());
+            var projects = provider.Projects;
+            return Ok(projects);
         }
 
         //[HttpGet]
@@ -52,7 +55,7 @@ namespace Productify.API.Controllers
         public IActionResult UpdateProject(Project project)
         {
             var provider = _providerFactory.CreateProvider();
-            provider.Update<Project>(project.Id, project);
+            provider.Update(project.Id, project);
             return Ok(project);
         }
 

@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Productify.DAL\Productify.DAL.csproj" />
+    <ProjectReference Include="..\..\..\NoSqlProvider\NoSqlProvider.csproj" />
   </ItemGroup>
 
 </Project>
