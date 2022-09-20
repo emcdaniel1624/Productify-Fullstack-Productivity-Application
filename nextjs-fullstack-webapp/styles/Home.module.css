@@ -118,10 +118,10 @@
 @media (prefers-color-scheme: dark) {
   .card,
   .footer {
-    border-color: #222;
+    border-color: rgb(188, 188, 188);
   }
   .code {
-    background: #111;
+    background: rgb(197, 197, 197);
   }
   .logo img {
     filter: invert(1);
