@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next-auth/mongodb-adapter": "^1.0.4",
+    "@types/mongodb": "^4.0.7",
     "@types/next-auth": "^3.15.0",
+    "mongodb": "^4.10.0",
     "next": "12.3.1",
     "next-auth": "^4.10.3",
     "react": "18.2.0",
